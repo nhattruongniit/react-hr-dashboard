@@ -200,7 +200,6 @@ function EmployeeList() {
             size="ssm"
             variant="outline"
             className='px-3 min-w-9 min-h-9'
-            active
           >
             1
           </Button>
