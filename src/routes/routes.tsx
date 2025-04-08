@@ -25,6 +25,7 @@ const LeaveManagementCreate = React.lazy(() => import('../pages/leave-management
 const LeaveManagementList = React.lazy(() => import('../pages/leave-management').then(module => ({ default: module.LeaveManagementList })));
 const LeaveManagementShow = React.lazy(() => import('../pages/leave-management').then(module => ({ default: module.LeaveManagementShow })));
 const LeaveManagementEdit = React.lazy(() => import('../pages/leave-management').then(module => ({ default: module.LeaveManagementEdit })));
+const LeaveManagementCalendar = React.lazy(() => import('../pages/leave-management').then(module => ({ default: module.LeaveManagementCalendar })));
 
 const NotFound = React.lazy(() => import('../pages/other-pages').then(module => ({ default: module.NotFound })));
 const UnauthoriedPage = React.lazy(() => import('../pages/other-pages').then(module => ({ default: module.UnauthoriedPage })));
@@ -145,6 +146,13 @@ const routesConfig = [
     layout: Template1,
     guard: AuthRoutes,
   },
+  {
+    path: PATH.LEAVE_MANAGEMENT_CALENDAR,
+    component: LeaveManagementCalendar,
+    layout: Template1,
+    guard: AuthRoutes,
+  },
+  
 ]
 
 function renderRoutes() {

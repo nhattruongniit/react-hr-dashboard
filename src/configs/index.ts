@@ -19,6 +19,7 @@ export const PATH = {
   LEAVE_MANAGEMENT_CREATE: "/leave-management/create",
   LEAVE_MANAGEMENT_SHOW: "/leave-management/show/:id",
   LEAVE_MANAGEMENT_EDIT: "/leave-management/edit/:id",
+  LEAVE_MANAGEMENT_CALENDAR: "/leave-management/calendar",
 }
 
 export const USER_ROLE = {

@@ -120,7 +120,7 @@ function LeavManagementCreate() {
           </div>
         </div>
 
-        <div className="w-1/2 flex flex-col lg:flex-row lg:justify-between lg:items-center gap-3 mt-5">
+        <div className="w-full flex flex-col lg:flex-row lg:justify-between lg:items-center gap-3 mt-5">
           <div className="w-full flex-col justify-start items-start gap-1.5 flex">
             <Label className="flex text-xs leading-normal text-gray-500 dark:text-gray-400">Leave Type  <MarkIcon fontSize={8} /></Label>
             <SelectField 
@@ -133,6 +133,16 @@ function LeavManagementCreate() {
                 { value: "unpaid", label: "Unpaid Leave" },
                 { value: "emergency", label: "Emergency Leave" },
                 { value: "other", label: "Other Leave" },
+              ]}
+            />
+          </div>
+          <div className="w-full flex-col justify-start items-start gap-1.5 flex">
+            <Label className="flex text-xs leading-normal text-gray-500 dark:text-gray-400">Type  <MarkIcon fontSize={8} /></Label>
+            <SelectField 
+              id="leaveType"
+              options={[
+                { value: "one-half", label: "One Half" },
+                { value: "full", label: "Full" },
               ]}
             />
           </div>

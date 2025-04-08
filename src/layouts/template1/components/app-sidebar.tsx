@@ -7,7 +7,6 @@ import {
   FileIcon,
   GridIcon,
   HorizontaLDots,
-  UserCircleIcon,
   UserIcon,
 } from "../../../icons";
 import { useSidebar } from "../../../contexts/sidebar-context";
@@ -34,17 +33,14 @@ const navItems: NavItem[] = [
   {
     icon: <FileIcon />,
     name: "Leave Management",
-    path: PATH.LEAVE_MANAGEMENT_LIST
+    subItems: [
+      { name: "List", path: PATH.LEAVE_MANAGEMENT_LIST },
+      { name: "Full Calendar", path: PATH.LEAVE_MANAGEMENT_CALENDAR},
+    ],
   },
 ];
 
-const othersItems: NavItem[] = [
-  {
-    icon: <UserCircleIcon />,
-    name: "User Profile",
-    path: PATH.PROFILE
-  },
-];
+const othersItems: NavItem[] = [];
 
 const AppSidebar: React.FC = () => {
   const { isExpanded, isMobileOpen, isHovered, setIsHovered } = useSidebar();
