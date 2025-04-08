@@ -6,7 +6,6 @@ interface AccessControlProps extends React.PropsWithChildren {
   resource: string
 }
 
-
 /*
 binary: https://www.freesoft.org/CIE/Topics/19.htm
 bitwise (&): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_AND

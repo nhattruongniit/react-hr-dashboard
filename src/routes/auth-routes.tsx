@@ -23,12 +23,14 @@ function AuthRoutes({ children }: React.PropsWithChildren) {
         };
         dispatch(setUser(user))
         setIsAuthenticated(true);
-      } catch (err) {
+      } catch (error) {
+        console.log('checkAuthenticated error: ', error);
         window.localStorage.clear();
         navigate(PATH.UNAUTHORIED_PAGE)
       }
     }
     checkAuthenticated();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [access_token])
 
   if(!access_token) {

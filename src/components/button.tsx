@@ -9,7 +9,6 @@ interface ButtonProps {
   onClick?: () => void; // Click handler
   disabled?: boolean; // Disabled state
   className?: string; // Disabled state
-  active?: boolean; // Active state
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -21,7 +20,6 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
   className = "",
   disabled = false,
-  active = false
 }) => {
   // Size Classes
   const sizeClasses = {

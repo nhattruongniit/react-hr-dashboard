@@ -6,8 +6,6 @@ import { LEAVE_STATUS, LEAVE_TYPE, PATH } from '../../configs';
 import Badge from '../../components/badge';
 import { Modal } from '../../components/modal';
 import { useModal } from '../../hooks/use-modal';
-import Label from '../../components/text-field/label-field';
-import Input from '../../components/text-field/input-field';
 
 interface Order {
   id: number;
@@ -60,13 +58,6 @@ for (let i = 0; i < 9; i++) {
 function LeaveManagementList() {
   const navigate = useNavigate();
   const { isOpen, openModal, closeModal } = useModal();
-
-  const handleSave = () => {
-    // Handle save logic here
-    console.log("Saving changes...");
-    closeModal();
-  };
-  
 
   return (
     <>
@@ -263,7 +254,6 @@ function LeaveManagementList() {
             size="ssm"
             variant="outline"
             className='px-3 min-w-9 min-h-9'
-            active
           >
             1
           </Button>
