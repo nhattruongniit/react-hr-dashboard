@@ -306,7 +306,18 @@ layer(base);
 }
 
 .apexcharts-text {
-  @apply fill-gray-700! dark:fill-gray-400!;
+  /* @apply fill-gray-700! dark:fill-gray-400!; */
+  text-transform: capitalize;
+}
+
+.leavePieChart .apexcharts-legend-text {
+  text-transform: capitalize;
+}
+
+.leavePieChart .apexcharts-tooltip-text {
+  text-transform: capitalize;
+  padding: 2px 4px;
+  @apply text-white/90! font-medium!;
 }
 
 .apexcharts-tooltip.apexcharts-theme-light {

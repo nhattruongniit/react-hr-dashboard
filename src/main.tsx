@@ -11,19 +11,22 @@ import App from './App.tsx'
 import { AppWrapper } from './components/page-meta.tsx'
 import { SidebarProvider } from './contexts/sidebar-context.tsx';
 import { initRequest } from './services/initRequest.ts'
+import { ThemeProvider } from './contexts/theme-context.tsx'
 
 initRequest(store);
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
-      <AppWrapper>
-        <BrowserRouter>
-          <SidebarProvider>
+      <ThemeProvider>
+        <AppWrapper>
+          <BrowserRouter>
+            <SidebarProvider>
               <App />
-          </SidebarProvider>
-        </BrowserRouter>
-      </AppWrapper>
+            </SidebarProvider>
+          </BrowserRouter>
+        </AppWrapper>
+      </ThemeProvider>
     </Provider>
   </StrictMode>,
 )

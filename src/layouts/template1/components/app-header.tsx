@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { Link } from "react-router";
 import { useSidebar } from "../../../contexts/sidebar-context";
+import { useTheme } from "../../../contexts/theme-context"; 
 
 import ThemeButton from "../components/theme-button";
 import NotificationDropdown from "../components/notification-dropdown";
@@ -9,7 +10,7 @@ import UserDropdown from "../components/user-dropdown";
 
 const AppHeader: React.FC = () => {
   const [isApplicationMenuOpen, setApplicationMenuOpen] = useState(false);
-
+  const { toggleTheme } = useTheme();
   const { isMobileOpen, toggleSidebar, toggleMobileSidebar } = useSidebar();
 
   const handleToggle = () => {
@@ -87,7 +88,7 @@ const AppHeader: React.FC = () => {
           <Link to="/" className="lg:hidden">
             <img
               className="dark:hidden"
-              src="./images/logo/logo.svg"
+              src="/images/logo/logo.svg"
               alt="Logo"
             />
             <img
@@ -158,13 +159,11 @@ const AppHeader: React.FC = () => {
           } items-center justify-between w-full gap-4 px-5 py-4 lg:flex shadow-theme-md lg:justify-end lg:px-0 lg:shadow-none`}
         >
           <div className="flex items-center gap-2 2xsm:gap-3">
-            {/* <!-- Dark Mode Toggler --> */}
-            <ThemeButton />
-            {/* <!-- Dark Mode Toggler --> */}
+            <ThemeButton 
+              toggleTheme={toggleTheme}
+            />
             <NotificationDropdown />
-            {/* <!-- Notification Menu Area --> */}
           </div>
-          {/* <!-- User Area --> */}
           <UserDropdown />
         </div>
       </div>

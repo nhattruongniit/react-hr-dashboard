@@ -17,6 +17,14 @@ const ListUser = React.lazy(() => import('../pages/user').then(module => ({ defa
 const ShowUser = React.lazy(() => import('../pages/user').then(module => ({ default: module.ShowUser })));
 const CreateUser = React.lazy(() => import('../pages/user').then(module => ({ default: module.CreateUser })));
 const EditUser = React.lazy(() => import('../pages/user').then(module => ({ default: module.EditUser })));
+const EmployeeList = React.lazy(() => import('../pages/employee').then(module => ({ default: module.EmployeeList })));
+const EmployeeShow = React.lazy(() => import('../pages/employee').then(module => ({ default: module.EmployeeShow })));
+const EmployeeCreate = React.lazy(() => import('../pages/employee').then(module => ({ default: module.EmployeeCreate })));
+const EmployeeEdit = React.lazy(() => import('../pages/employee').then(module => ({ default: module.EmployeeEdit })));
+const LeaveManagementCreate = React.lazy(() => import('../pages/leave-management').then(module => ({ default: module.LeaveManagementCreate })));
+const LeaveManagementList = React.lazy(() => import('../pages/leave-management').then(module => ({ default: module.LeaveManagementList })));
+const LeaveManagementShow = React.lazy(() => import('../pages/leave-management').then(module => ({ default: module.LeaveManagementShow })));
+const LeaveManagementEdit = React.lazy(() => import('../pages/leave-management').then(module => ({ default: module.LeaveManagementEdit })));
 
 const NotFound = React.lazy(() => import('../pages/other-pages').then(module => ({ default: module.NotFound })));
 const UnauthoriedPage = React.lazy(() => import('../pages/other-pages').then(module => ({ default: module.UnauthoriedPage })));
@@ -86,6 +94,54 @@ const routesConfig = [
   {
     path: PATH.CALENDAR,
     component: Calendar,
+    layout: Template1,
+    guard: AuthRoutes,
+  },
+  {
+    path: PATH.EMPLOYEE_LIST,
+    component: EmployeeList,
+    layout: Template1,
+    guard: AuthRoutes,
+  },
+  {
+    path: PATH.EMPLOYEE_CREATE,
+    component: EmployeeCreate,
+    layout: Template1,
+    guard: AuthRoutes,
+  },
+  {
+    path: PATH.EMPLOYEE_EDIT,
+    component: EmployeeEdit,
+    layout: Template1,
+    guard: AuthRoutes,
+  },
+  {
+    path: PATH.EMPLOYEE_SHOW,
+    component: EmployeeShow,
+    layout: Template1,
+    guard: AuthRoutes,
+  },
+  {
+    path: PATH.LEAVE_MANAGEMENT_SHOW,
+    component: LeaveManagementShow,
+    layout: Template1,
+    guard: AuthRoutes,
+  },
+  {
+    path: PATH.LEAVE_MANAGEMENT_CREATE,
+    component: LeaveManagementCreate,
+    layout: Template1,
+    guard: AuthRoutes,
+  },
+  {
+    path: PATH.LEAVE_MANAGEMENT_EDIT,
+    component: LeaveManagementEdit,
+    layout: Template1,
+    guard: AuthRoutes,
+  },
+  {
+    path: PATH.LEAVE_MANAGEMENT_LIST,
+    component: LeaveManagementList,
     layout: Template1,
     guard: AuthRoutes,
   },
