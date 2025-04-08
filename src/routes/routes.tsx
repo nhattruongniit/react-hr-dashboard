@@ -26,6 +26,13 @@ const LeaveManagementList = React.lazy(() => import('../pages/leave-management')
 const LeaveManagementShow = React.lazy(() => import('../pages/leave-management').then(module => ({ default: module.LeaveManagementShow })));
 const LeaveManagementEdit = React.lazy(() => import('../pages/leave-management').then(module => ({ default: module.LeaveManagementEdit })));
 const LeaveManagementCalendar = React.lazy(() => import('../pages/leave-management').then(module => ({ default: module.LeaveManagementCalendar })));
+const InvoiceList = React.lazy(() => import('../pages/invoice').then(module => ({ default: module.InvoiceList })));
+const InvoiceCreate = React.lazy(() => import('../pages/invoice').then(module => ({ default: module.InvoiceCreate })));
+const InvoiceShow = React.lazy(() => import('../pages/invoice').then(module => ({ default: module.InvoiceShow })));
+const InvoiceEdit = React.lazy(() => import('../pages/invoice').then(module => ({ default: module.InvoiceEdit })));
+const ResumeList = React.lazy(() => import('../pages/resume').then(module => ({ default: module.ResumeList })));
+const ResumeShow = React.lazy(() => import('../pages/resume').then(module => ({ default: module.ResumeShow })));
+const ResumeEdit = React.lazy(() => import('../pages/resume').then(module => ({ default: module.ResumeEdit })));
 
 const NotFound = React.lazy(() => import('../pages/other-pages').then(module => ({ default: module.NotFound })));
 const UnauthoriedPage = React.lazy(() => import('../pages/other-pages').then(module => ({ default: module.UnauthoriedPage })));
@@ -152,7 +159,48 @@ const routesConfig = [
     layout: Template1,
     guard: AuthRoutes,
   },
-  
+  {
+    path: PATH.INVOICE_LIST,
+    component: InvoiceList,
+    layout: Template1,
+    guard: AuthRoutes,
+  },
+  {
+    path: PATH.INVOICE_CREATE,
+    component: InvoiceCreate,
+    layout: Template1,
+    guard: AuthRoutes,
+  },
+  {
+    path: PATH.INVOICE_EDIT,
+    component: InvoiceEdit,
+    layout: Template1,
+    guard: AuthRoutes,
+  },
+  {
+    path: PATH.INVOICE_SHOW,
+    component: InvoiceShow,
+    layout: Template1,
+    guard: AuthRoutes,
+  },
+  {
+    path: PATH.RESUME_LIST,
+    component: ResumeList,
+    layout: Template1,
+    guard: AuthRoutes,
+  },
+  {
+    path: PATH.RESUME_EDIT,
+    component: ResumeEdit,
+    layout: Template1,
+    guard: AuthRoutes,
+  },
+  {
+    path: PATH.RESUME_SHOW,
+    component: ResumeShow,
+    layout: Template1,
+    guard: AuthRoutes,
+  },
 ]
 
 function renderRoutes() {

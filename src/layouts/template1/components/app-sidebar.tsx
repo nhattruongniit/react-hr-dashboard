@@ -3,10 +3,13 @@ import { Link, useLocation } from "react-router";
 
 // Assume these icons are imported from an icon library
 import {
+  BoltIcon,
   ChevronDownIcon,
+  DocsIcon,
   FileIcon,
   GridIcon,
   HorizontaLDots,
+  TimeIcon,
   UserIcon,
 } from "../../../icons";
 import { useSidebar } from "../../../contexts/sidebar-context";
@@ -31,7 +34,17 @@ const navItems: NavItem[] = [
     path: PATH.EMPLOYEE_LIST,
   },
   {
-    icon: <FileIcon />,
+    icon: <BoltIcon />,
+    name: "Invoice",
+    path: PATH.INVOICE_LIST,
+  },
+  {
+    icon: <DocsIcon />,
+    name: "Resume",
+    path: PATH.RESUME_LIST,
+  },
+  {
+    icon: <TimeIcon />,
     name: "Leave Management",
     subItems: [
       { name: "List", path: PATH.LEAVE_MANAGEMENT_LIST },

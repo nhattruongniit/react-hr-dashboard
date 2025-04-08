@@ -20,6 +20,13 @@ export const PATH = {
   LEAVE_MANAGEMENT_SHOW: "/leave-management/show/:id",
   LEAVE_MANAGEMENT_EDIT: "/leave-management/edit/:id",
   LEAVE_MANAGEMENT_CALENDAR: "/leave-management/calendar",
+  INVOICE_LIST: "/invoice/list",
+  INVOICE_CREATE: "/invoice/create",
+  INVOICE_SHOW: "/invoice/show/:id",
+  INVOICE_EDIT: "/invoice/edit/:id",
+  RESUME_LIST: "/resume/list",
+  RESUME_SHOW: "/resume/show/:id",
+  RESUME_EDIT: "/resume/edit/:id",
 }
 
 export const USER_ROLE = {
