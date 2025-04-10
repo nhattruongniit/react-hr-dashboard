@@ -47,6 +47,7 @@ const navItems: NavItem[] = [
     icon: <TimeIcon />,
     name: "Leave Management",
     subItems: [
+      { name: "Create", path: PATH.LEAVE_MANAGEMENT_CREATE },
       { name: "List", path: PATH.LEAVE_MANAGEMENT_LIST },
       { name: "Full Calendar", path: PATH.LEAVE_MANAGEMENT_CALENDAR},
     ],

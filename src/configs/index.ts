@@ -52,3 +52,12 @@ export const LEAVE_TYPE = {
   OTHER: 'other',
   EMERGENCY: 'emergency',
 }
+
+export const LEAVE_TYPE_COLOR = ["aqua", "#008FFB", "#00E396", "#775DD0", "#FEB019", "#FF4560", "#9f2cb1"]
+
+export const INVOICE_STATUS = {
+  PENDING: 'pending',
+  APPROVED: 'approved',
+  REJECTED: 'rejected',
+  CANCELLED: 'cancelled',
+}

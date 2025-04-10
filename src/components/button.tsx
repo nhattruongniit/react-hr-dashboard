@@ -1,6 +1,6 @@
-import { ReactNode } from "react";
+import { ButtonHTMLAttributes, ReactNode } from "react";
 
-interface ButtonProps {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
   children?: ReactNode; // Button text or content
   size?: "ssm" | "sm" | "md"; // Button size
   variant?: "primary" | "outline"; // Button variant
@@ -20,6 +20,8 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
   className = "",
   disabled = false,
+  type = "button",
+  ...restProps
 }) => {
   // Size Classes
   const sizeClasses = {
@@ -45,6 +47,8 @@ const Button: React.FC<ButtonProps> = ({
       }`}
       onClick={onClick}
       disabled={disabled}
+      type={type}
+      {...restProps}
     >
       {startIcon && <span className="flex items-center">{startIcon}</span>}
       {children}

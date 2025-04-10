@@ -7,7 +7,11 @@ type BadgeColor =
   | "warning"
   | "info"
   | "light"
-  | "dark";
+  | "dark"
+  | "pending"
+  | "approved"
+  | "rejected"
+  | "cancelled";
 
 interface BadgeProps {
   variant?: BadgeVariant; // Light or solid variant
@@ -60,12 +64,16 @@ const Badge: React.FC<BadgeProps> = ({
       info: "bg-blue-light-500 text-white dark:text-white",
       light: "bg-gray-400 dark:bg-white/5 text-white dark:text-white/80",
       dark: "bg-gray-700 text-white dark:text-white",
+      pending: "bg-yellow-500 text-white dark:text-white",
+      approved: "bg-green-500 text-white dark:text-white",
+      rejected: "bg-red-500 text-white dark:text-white",
+      cancelled: "bg-gray-500 text-white dark:text-white",
     },
   };
 
   // Get styles based on size and color variant
   const sizeClass = sizeStyles[size];
-  const colorStyles = variants[variant][color];
+  const colorStyles = variants[variant][color as keyof typeof variants[typeof variant]];
 
   return (
     <span className={`${baseStyles} ${sizeClass} ${colorStyles} ${className}`}>

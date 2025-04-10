@@ -7,7 +7,67 @@ import Label from "../../components/text-field/label-field"
 import SelectField from "../../components/text-field/select-field";
 import TextArea from "../../components/text-field/text-area";
 import { MarkIcon } from "../../icons"
-import { LEAVE_TYPE } from "../../configs";
+import { LEAVE_TYPE_COLOR, LEAVE_TYPE } from "../../configs";
+import { Table, TableBody, TableCell, TableHeader, TableRow } from "../../components/table/table";
+
+const tableData: any = [
+  {
+    id: 1,
+    name: LEAVE_TYPE.ANNUAL,
+    allocate: "14",
+    used: "2",
+    balance: "12",
+    color: LEAVE_TYPE_COLOR[0],
+  },
+  {
+    id: 2,
+    name: LEAVE_TYPE.SICK,
+    allocate: "12",
+    used: "3",
+    balance: "9",
+    color: LEAVE_TYPE_COLOR[1],
+  },
+  {
+    id: 3,
+    name: LEAVE_TYPE.VACATION,
+    allocate: "10",
+    used: "1",
+    balance: "9",
+    color: LEAVE_TYPE_COLOR[2],
+  },
+  {
+    id: 4,
+    name: LEAVE_TYPE.PERSONAL,
+    allocate: "10",
+    used: "0",
+    balance: "10",
+    color: LEAVE_TYPE_COLOR[3],
+  },
+  {
+    id: 5,
+    name: LEAVE_TYPE.UNPAID,
+    allocate: "8",
+    used: "0",
+    balance: "8",
+    color: LEAVE_TYPE_COLOR[4],
+  },
+  {
+    id: 6,
+    name: LEAVE_TYPE.OTHER,
+    allocate: "6",
+    used: "0",
+    balance: "6",
+    color: LEAVE_TYPE_COLOR[5],
+  },
+  {
+    id: 7,
+    name: LEAVE_TYPE.EMERGENCY,
+    allocate: "5",
+    used: "0",
+    balance: "5",
+    color: LEAVE_TYPE_COLOR[6],
+  }
+]
 
 function LeavManagementCreate() {
   const navigate = useNavigate();
@@ -26,9 +86,24 @@ function LeavManagementCreate() {
       },
       formatter: function (_: any, opts: any) {
         const value = opts.w.globals.series[opts.seriesIndex];
-        return ` ${value}`;
+        return `${value}`;
       },
     },
+    colors: LEAVE_TYPE_COLOR,
+    tooltip: {
+      custom: function ({ series, seriesIndex, w }: any) {
+        const label = w.globals.labels[seriesIndex];
+        const value = series[seriesIndex];
+        const percent = ((value / series.reduce((a: number, b: number) => a + b, 0)) * 100).toFixed(1);
+
+        return `
+          <div style="padding: 8px; color: #fff;">
+            <strong style="text-transform: capitalize; text-align: center">${label}</strong><br/>
+            <b>${value}</b> (${percent}%)
+          </div>
+        `;
+      },
+    }
   };
 
 
@@ -170,13 +245,72 @@ function LeavManagementCreate() {
       </div>
 
       <div className="flex-1 rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] lg:p-6">
-        <div className='mb-5 lg:mb-7'>
-          <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
-            Remaining Leave
-          </h3>
+        <div>
+          <div className='mb-5 lg:mb-7'>
+            <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
+              Remaining Leave
+            </h3>
+          </div>
+          <div className="w-full flex align-center justify-center text-white leavePieChart">
+            <Chart options={options} series={series} type="pie" width="380" />
+          </div>
         </div>
-        <div className="w-full flex align-center justify-center text-white leavePieChart">
-          <Chart options={options} series={series} type="pie" width="380" />
+        <div className="max-w-full overflow-x-auto">
+          <Table>
+            {/* Table Header */}
+            <TableHeader className="border-b border-gray-100 dark:border-white/[0.05]">
+              <TableRow>
+                <TableCell
+                  isHeader
+                  className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+                >
+                  Name
+                </TableCell>
+                <TableCell
+                  isHeader
+                  className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+                >
+                  Allocate
+                </TableCell>
+                <TableCell
+                  isHeader
+                  className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+                >
+                  Used
+                </TableCell>
+                <TableCell
+                  isHeader
+                  className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+                >
+                  Balance
+                </TableCell>
+              </TableRow>
+            </TableHeader>
+
+            {/* Table Body */}
+            <TableBody className="divide-y divide-gray-100 dark:divide-white/[0.05]">
+              {tableData.map((item: any) => (
+                <TableRow key={item.id}>
+                  <TableCell className="px-4 py-2 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                    <span
+                      style={{ backgroundColor: item.color }}
+                      className="w-2.5 h-2.5 rounded-full inline-block mr-2" 
+                    />
+                    <span className="capitalize">{item.name}</span>
+                  </TableCell>
+                  <TableCell className="px-4 py-2 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                    {item.allocate}
+                  </TableCell>
+                  <TableCell className="px-4 py-2 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                    {item.used}
+                  </TableCell>
+                  <TableCell className="px-4 py-2 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                    {item.balance}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
         </div>
       </div>
     </div>
