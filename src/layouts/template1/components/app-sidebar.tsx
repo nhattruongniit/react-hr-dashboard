@@ -34,14 +34,17 @@ const navItems: NavItem[] = [
     path: PATH.EMPLOYEE_LIST,
   },
   {
-    icon: <BoltIcon />,
-    name: "Invoice",
-    path: PATH.INVOICE_LIST,
-  },
-  {
     icon: <DocsIcon />,
     name: "Resume",
     path: PATH.RESUME_LIST,
+  },
+  {
+    icon: <BoltIcon />,
+    name: "Invoice",
+    subItems: [
+      { name: "Create", path: PATH.INVOICE_CREATE },
+      { name: "List", path: PATH.INVOICE_LIST },
+    ],
   },
   {
     icon: <TimeIcon />,

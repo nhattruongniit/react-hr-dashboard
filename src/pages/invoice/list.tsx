@@ -1,9 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import Button from '../../components/button';
 import { Table, TableBody, TableCell, TableHeader, TableRow } from '../../components/table/table'
-import { PATH } from '../../configs';
+import { INVOICE_STATUS, PATH } from '../../configs';
 import { randomId } from '../../utils/randomId';
 import Badge from '../../components/badge';
+import RadioField from '../../components/text-field/radio-field';
+import React from 'react';
 
 interface TableData {
   id: string;
@@ -37,6 +39,11 @@ for (let i = 0; i < 9; i++) {
 
 function InvoiceList() {
   const navigate = useNavigate();
+  const [selectedValue, setSelectedValue] = React.useState<string>("all");
+
+  const handleRadioChange = (value: string) => {
+    setSelectedValue(value);
+  };
 
   return (
     <>
@@ -76,10 +83,53 @@ function InvoiceList() {
               startIcon={<div className='fa-classic fa-solid fa-plus fa-fw' />}
               onClick={() => navigate(PATH.EMPLOYEE_CREATE)}
             >
-              Create
+              Create Invoice
             </Button>
           </div>
          
+        </div>
+        <div className='flex items-center gap-3 mb-5'>
+          Show only: {' '} 
+          <RadioField
+            id="radio-all"
+            name="group1"
+            value="all"
+            checked={selectedValue === "all"}
+            onChange={() => handleRadioChange("all")}
+            label="All"
+          />
+          <RadioField
+            id="radio-approved"
+            name="group1"
+            value={INVOICE_STATUS.APPROVED}
+            checked={selectedValue === INVOICE_STATUS.APPROVED}
+            onChange={() => handleRadioChange(INVOICE_STATUS.APPROVED)}
+            label={INVOICE_STATUS.APPROVED}
+          />
+          <RadioField
+            id="radio-pending"
+            name="group1"
+            value={INVOICE_STATUS.PENDING}
+            checked={selectedValue === INVOICE_STATUS.PENDING}
+            onChange={() => handleRadioChange(INVOICE_STATUS.PENDING)}
+            label={INVOICE_STATUS.PENDING}
+          />
+          <RadioField
+            id="radio-rejected"
+            name="group1"
+            value={INVOICE_STATUS.REJECTED}
+            checked={selectedValue === INVOICE_STATUS.REJECTED}
+            onChange={() => handleRadioChange(INVOICE_STATUS.REJECTED)}
+            label={INVOICE_STATUS.REJECTED}
+          />
+          <RadioField
+            id="radio-cancelled"
+            name="group1"
+            value={INVOICE_STATUS.CANCELLED}
+            checked={selectedValue === INVOICE_STATUS.CANCELLED}
+            onChange={() => handleRadioChange(INVOICE_STATUS.CANCELLED)}
+            label={INVOICE_STATUS.CANCELLED}
+          />
         </div>
         <div className="space-y-6">
           <div className="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-white/[0.05] dark:bg-white/[0.03]">
