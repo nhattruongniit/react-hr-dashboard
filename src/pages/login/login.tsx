@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import { PATH } from "../../configs";
-import { ChevronLeftIcon, EyeCloseIcon, EyeIcon } from "../../icons";
+import { EyeCloseIcon, EyeIcon } from "../../icons";
 import Label from "../../components/text-field/label-field";
 import Input from "../../components/text-field/input-field";
 import CheckboxField from "../../components/text-field/checkbox-field";

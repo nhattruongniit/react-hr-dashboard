@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ChevronLeftIcon, EyeCloseIcon, EyeIcon } from "../../icons";
+import { EyeCloseIcon, EyeIcon } from "../../icons";
 import Label from "../../components/text-field/label-field";
 import Input from "../../components/text-field/input-field";
 import CheckboxField from "../../components/text-field/checkbox-field";

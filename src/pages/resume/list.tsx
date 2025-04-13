@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import Button from '../../components/button';
 import { Table, TableBody, TableCell, TableHeader, TableRow } from '../../components/table/table'
-import { LEAVE_STATUS, LEAVE_TYPE, PATH, RESUME_STATUS } from '../../configs';
+import { PATH, RESUME_STATUS } from '../../configs';
 import Badge from '../../components/badge';
 import { Modal } from '../../components/modal';
 import { useModal } from '../../hooks/use-modal';
