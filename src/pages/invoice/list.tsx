@@ -6,6 +6,8 @@ import { randomId } from '../../utils/randomId';
 import Badge from '../../components/badge';
 import RadioField from '../../components/text-field/radio-field';
 import React from 'react';
+import { useModal } from '../../hooks/use-modal';
+import { Modal } from '../../components/modal';
 
 interface TableData {
   id: string;
@@ -40,6 +42,7 @@ for (let i = 0; i < 9; i++) {
 function InvoiceList() {
   const navigate = useNavigate();
   const [selectedValue, setSelectedValue] = React.useState<string>("all");
+  const { isOpen, openModal, closeModal } = useModal();
 
   const handleRadioChange = (value: string) => {
     setSelectedValue(value);
@@ -48,6 +51,60 @@ function InvoiceList() {
   return (
     <>
       <div className="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] lg:p-6">
+        <div className='flex flex-wrap items-center justify-between mb-5 lg:mb-7 gap-4'>
+          <div className="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] md:p-6 flex-1">
+            <div className="text-sm font-medium text-gray-800 dark:text-white/90 capitalize">
+              <Badge variant="solid" color={INVOICE_STATUS.APPROVED.toLowerCase() as any}>
+                {INVOICE_STATUS.APPROVED}
+              </Badge>
+            </div>
+            <h4 className="mt-2 mb-2 font-bold text-gray-800 text-title-sm dark:text-white/90">
+              $76,940
+            </h4>
+            <span className="text-sm text-gray-500 dark:text-gray-400">
+              350 invoices
+            </span>
+          </div>
+          <div className="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] md:p-6 flex-1">
+            <div className="text-sm font-medium text-gray-800 dark:text-white/90 capitalize">
+              <Badge variant="solid" color={INVOICE_STATUS.PENDING.toLowerCase() as any}>
+                {INVOICE_STATUS.PENDING}
+              </Badge>
+            </div>
+            <h4 className="mt-2 mb-2 font-bold text-gray-800 text-title-sm dark:text-white/90">
+              $12,340
+            </h4>
+            <span className="text-sm text-gray-500 dark:text-gray-400">
+              105 invoices
+            </span>
+          </div>
+          <div className="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] md:p-6 flex-1">
+            <div className="text-sm font-medium text-gray-800 dark:text-white/90 capitalize">
+              <Badge variant="solid" color={INVOICE_STATUS.REJECTED.toLowerCase() as any}>
+                {INVOICE_STATUS.REJECTED}
+              </Badge>
+            </div>
+            <h4 className="mt-2 mb-2 font-bold text-gray-800 text-title-sm dark:text-white/90">
+              $4,500
+            </h4>
+            <span className="text-sm text-gray-500 dark:text-gray-400">
+              10 invoices
+            </span>
+          </div>
+          <div className="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] md:p-6 flex-1">
+            <div className="text-sm font-medium text-gray-800 dark:text-white/90 capitalize">
+              <Badge variant="solid" color={INVOICE_STATUS.CANCELLED.toLowerCase() as any}>
+                {INVOICE_STATUS.CANCELLED}
+              </Badge>
+            </div>
+            <h4 className="mt-2 mb-2 font-bold text-gray-800 text-title-sm dark:text-white/90">
+              $0
+            </h4>
+            <span className="text-sm text-gray-500 dark:text-gray-400">
+              0 invoices
+            </span>
+          </div>
+        </div>
         <div className='flex items-center justify-between mb-5 lg:mb-7'>
           <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
             Invoice List
@@ -81,7 +138,7 @@ function InvoiceList() {
               size="ssm"
               variant="primary"
               startIcon={<div className='fa-classic fa-solid fa-plus fa-fw' />}
-              onClick={() => navigate(PATH.EMPLOYEE_CREATE)}
+              onClick={() => navigate(PATH.INVOICE_CREATE)}
             >
               Create Invoice
             </Button>
@@ -89,7 +146,7 @@ function InvoiceList() {
          
         </div>
         <div className='flex items-center gap-3 mb-5'>
-          Show only: {' '} 
+          <span className='dark:text-white'>Show only: </span>
           <RadioField
             id="radio-all"
             name="group1"
@@ -222,7 +279,7 @@ function InvoiceList() {
                           size="ssm"
                           variant="outline"
                           startIcon={<div className='fa-classic fa-solid fa-eye fa-fw' />}
-                          // onClick={() => navigate(PATH.INVOICE_SHOW.replace(':id', item.id.toString()))}
+                          onClick={openModal}
                           className='mr-2 mb-2'
                         />
                         <Button
@@ -279,7 +336,119 @@ function InvoiceList() {
             Next
           </Button>
         </div>
-    </div>
+      </div>
+
+      <Modal isOpen={isOpen} onClose={closeModal} className="max-w-[700px] m-4">
+        <div className="no-scrollbar relative w-full max-w-[700px] overflow-y-auto rounded-3xl bg-white p-4 dark:bg-gray-900 lg:p-11">
+          <div className="px-2 pr-14 mb-7">
+            <h4 className="mb-2 text-2xl font-semibold text-gray-800 dark:text-white/90">
+              Invoice Details
+            </h4>
+          </div>
+
+          <div className="w-full flex flex-col lg:flex-row lg:justify-between lg:items-center gap-3 mt-5">
+            <div className="flex-1">
+              <p className="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
+                Employee ID
+              </p>
+              <p className="text-sm font-medium text-gray-800 dark:text-white/90">
+              edcf765c-82d3-4c06-8102
+              </p>
+            </div>
+            <div className="flex-1 mt-3 lg:mt-0">
+              <p className="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
+                Status
+              </p>
+              <p className="text-sm font-medium text-gray-800 dark:text-white/90 capitalize">
+                <Badge variant="solid" color={INVOICE_STATUS.PENDING.toLowerCase() as any}>
+                  {INVOICE_STATUS.PENDING}
+                </Badge>
+              </p>
+            </div>
+          </div>
+
+          <div className="w-full flex flex-col lg:flex-row lg:justify-between lg:items-center gap-3 mt-5">
+            <div className="flex-1">
+              <p className="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
+                First Name
+              </p>
+              <p className="text-sm font-medium text-gray-800 dark:text-white/90">
+                Tonys
+              </p>
+            </div>
+            <div className="flex-1 mt-3 lg:mt-0">
+              <p className="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
+                Last Name
+              </p>
+              <p className="text-sm font-medium text-gray-800 dark:text-white/90">
+                Nguyen
+              </p>
+            </div>
+          </div>
+
+          <div className="w-full flex flex-col lg:flex-row lg:justify-between lg:items-center gap-3 mt-5">
+            <div className="flex-1">
+              <p className="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
+                Email
+              </p>
+              <p className="text-sm font-medium text-gray-800 dark:text-white/90">
+                tony@gmail.com
+              </p>
+            </div>
+            <div className="flex-1 mt-3 lg:mt-0">
+              <p className="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
+                Phone
+              </p>
+              <p className="text-sm font-medium text-gray-800 dark:text-white/90">
+                +84 123 456 789
+              </p>
+            </div>
+          </div>
+
+          <div className="w-full flex flex-col lg:flex-row lg:justify-between lg:items-center gap-3 mt-5">
+            <div className="flex-1">
+              <p className="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
+                Create Date
+              </p>
+              <p className="text-sm font-medium text-gray-800 dark:text-white/90">
+                12/12/2023
+              </p>
+            </div>
+            <div className="flex-1 mt-3 lg:mt-0">
+              <p className="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
+                Amount
+              </p>
+              <p className="text-sm font-medium text-gray-800 dark:text-white/90">
+                20.000.000 VND
+              </p>
+            </div>
+          </div>
+
+          <div className="w-full flex flex-col lg:flex-row lg:justify-between lg:items-center gap-3 mt-5">
+            <div className="flex-1">
+              <p className="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
+                File
+              </p>
+              <p className="text-sm font-medium text-gray-800 dark:text-white/90 capitalize">
+                <a href="" className="text-blue-500 hover:underline">
+                  Invoice.pdf
+                </a>
+              </p>
+            </div>
+          </div>
+
+          <div className="w-full flex flex-col lg:flex-row lg:justify-between lg:items-center gap-3 mt-5">
+            <div className="flex-1">
+              <p className="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
+                Comments
+              </p>
+              <p className="text-sm font-medium text-gray-800 dark:text-white/90 capitalize">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+            </div>
+          </div>
+        </div>
+      </Modal>
     </>
   )
 }

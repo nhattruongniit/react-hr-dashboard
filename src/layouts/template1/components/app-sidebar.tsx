@@ -6,7 +6,6 @@ import {
   BoltIcon,
   ChevronDownIcon,
   DocsIcon,
-  FileIcon,
   GridIcon,
   HorizontaLDots,
   TimeIcon,
@@ -36,7 +35,7 @@ const navItems: NavItem[] = [
   {
     icon: <DocsIcon />,
     name: "Resume",
-    path: PATH.RESUME_LIST,
+    path: PATH.RESUME_LIST 
   },
   {
     icon: <BoltIcon />,

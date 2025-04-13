@@ -11,7 +11,8 @@ type BadgeColor =
   | "pending"
   | "approved"
   | "rejected"
-  | "cancelled";
+  | "cancelled"
+  | "interviewed";
 
 interface BadgeProps {
   variant?: BadgeVariant; // Light or solid variant
@@ -68,6 +69,7 @@ const Badge: React.FC<BadgeProps> = ({
       approved: "bg-green-500 text-white dark:text-white",
       rejected: "bg-red-500 text-white dark:text-white",
       cancelled: "bg-gray-500 text-white dark:text-white",
+      interviewed: "bg-purple-500 text-white dark:text-white",
     },
   };
 

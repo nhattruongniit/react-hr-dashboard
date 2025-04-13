@@ -1,117 +1,17 @@
 import { useNavigate } from "react-router-dom";
-import Chart from "react-apexcharts";
-
 import Button from "../../components/button";
 import DatePicker from "../../components/text-field/date-picker";
 import Label from "../../components/text-field/label-field"
-import SelectField from "../../components/text-field/select-field";
 import TextArea from "../../components/text-field/text-area";
 import { MarkIcon } from "../../icons"
-import { LEAVE_TYPE_COLOR, LEAVE_TYPE } from "../../configs";
-import { Table, TableBody, TableCell, TableHeader, TableRow } from "../../components/table/table";
-import Input from "../../components/text-field/input-field";
 import GroupInputField from "../../components/text-field/group-input-field";
 import FileInputField from "../../components/text-field/file-input-field";
 
-const tableData: any = [
-  {
-    id: 1,
-    name: LEAVE_TYPE.ANNUAL,
-    allocate: "14",
-    used: "2",
-    balance: "12",
-    color: LEAVE_TYPE_COLOR[0],
-  },
-  {
-    id: 2,
-    name: LEAVE_TYPE.SICK,
-    allocate: "12",
-    used: "3",
-    balance: "9",
-    color: LEAVE_TYPE_COLOR[1],
-  },
-  {
-    id: 3,
-    name: LEAVE_TYPE.VACATION,
-    allocate: "10",
-    used: "1",
-    balance: "9",
-    color: LEAVE_TYPE_COLOR[2],
-  },
-  {
-    id: 4,
-    name: LEAVE_TYPE.PERSONAL,
-    allocate: "10",
-    used: "0",
-    balance: "10",
-    color: LEAVE_TYPE_COLOR[3],
-  },
-  {
-    id: 5,
-    name: LEAVE_TYPE.UNPAID,
-    allocate: "8",
-    used: "0",
-    balance: "8",
-    color: LEAVE_TYPE_COLOR[4],
-  },
-  {
-    id: 6,
-    name: LEAVE_TYPE.OTHER,
-    allocate: "6",
-    used: "0",
-    balance: "6",
-    color: LEAVE_TYPE_COLOR[5],
-  },
-  {
-    id: 7,
-    name: LEAVE_TYPE.EMERGENCY,
-    allocate: "5",
-    used: "0",
-    balance: "5",
-    color: LEAVE_TYPE_COLOR[6],
-  }
-]
-
 function InvoiceCreate() {
   const navigate = useNavigate();
-  const labels = [LEAVE_TYPE.ANNUAL, LEAVE_TYPE.SICK, LEAVE_TYPE.VACATION, LEAVE_TYPE.PERSONAL, LEAVE_TYPE.UNPAID, LEAVE_TYPE.OTHER, LEAVE_TYPE.EMERGENCY];
-  const series = [14, 12, 10, 10, 8, 6, 5];
-  const options: any = {
-    chart: {
-      type: "pie",
-    },
-    labels,
-    dataLabels: {
-      enabled: true,
-      style: {
-        fontSize: "14px",
-        colors: ["#ffffff"],
-      },
-      formatter: function (_: any, opts: any) {
-        const value = opts.w.globals.series[opts.seriesIndex];
-        return `${value}`;
-      },
-    },
-    colors: LEAVE_TYPE_COLOR,
-    tooltip: {
-      custom: function ({ series, seriesIndex, w }: any) {
-        const label = w.globals.labels[seriesIndex];
-        const value = series[seriesIndex];
-        const percent = ((value / series.reduce((a: number, b: number) => a + b, 0)) * 100).toFixed(1);
-
-        return `
-          <div style="padding: 8px; color: #fff;">
-            <strong style="text-transform: capitalize; text-align: center">${label}</strong><br/>
-            <b>${value}</b> (${percent}%)
-          </div>
-        `;
-      },
-    }
-  };
-
 
   return (
-    <div className="flex justify-between w-full gap-5">
+    <div className="lg:flex block justify-between w-full gap-5">
       <div className="flex-1 rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] lg:p-6">
         <div className='mb-5 lg:mb-7'>
           <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
@@ -220,7 +120,7 @@ function InvoiceCreate() {
         </div>
       </div>
 
-      <div className="flex-1 rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] lg:p-6">
+      <div className="flex-1 mt-4 lg:mt-0 rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] lg:p-6">
         <div>
           <div className='mb-5 lg:mb-7'>
             <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
@@ -234,6 +134,9 @@ function InvoiceCreate() {
           <Label>Upload file</Label>
           <FileInputField className="custom-class" />
         </div>
+        <div className="mt-4">
+          <img src="/pdf/invoice.png" alt="invoice" />
+      </div>
       </div>
     </div>
   ) 

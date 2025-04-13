@@ -61,3 +61,10 @@ export const INVOICE_STATUS = {
   REJECTED: 'rejected',
   CANCELLED: 'cancelled',
 }
+
+export const RESUME_STATUS = {
+  PENDING: 'pending',
+  REJECTED: 'rejected',
+  CANCELLED: 'cancelled',
+  INTERVIEWED: 'interviewed',
+}

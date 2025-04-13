@@ -23,12 +23,10 @@ const EmployeeCreate = React.lazy(() => import('../pages/employee').then(module 
 const EmployeeEdit = React.lazy(() => import('../pages/employee').then(module => ({ default: module.EmployeeEdit })));
 const LeaveManagementCreate = React.lazy(() => import('../pages/leave-management').then(module => ({ default: module.LeaveManagementCreate })));
 const LeaveManagementList = React.lazy(() => import('../pages/leave-management').then(module => ({ default: module.LeaveManagementList })));
-const LeaveManagementShow = React.lazy(() => import('../pages/leave-management').then(module => ({ default: module.LeaveManagementShow })));
 const LeaveManagementEdit = React.lazy(() => import('../pages/leave-management').then(module => ({ default: module.LeaveManagementEdit })));
 const LeaveManagementCalendar = React.lazy(() => import('../pages/leave-management').then(module => ({ default: module.LeaveManagementCalendar })));
 const InvoiceList = React.lazy(() => import('../pages/invoice').then(module => ({ default: module.InvoiceList })));
 const InvoiceCreate = React.lazy(() => import('../pages/invoice').then(module => ({ default: module.InvoiceCreate })));
-const InvoiceShow = React.lazy(() => import('../pages/invoice').then(module => ({ default: module.InvoiceShow })));
 const InvoiceEdit = React.lazy(() => import('../pages/invoice').then(module => ({ default: module.InvoiceEdit })));
 const ResumeList = React.lazy(() => import('../pages/resume').then(module => ({ default: module.ResumeList })));
 const ResumeShow = React.lazy(() => import('../pages/resume').then(module => ({ default: module.ResumeShow })));
@@ -130,12 +128,6 @@ const routesConfig = [
     guard: AuthRoutes,
   },
   {
-    path: PATH.LEAVE_MANAGEMENT_SHOW,
-    component: LeaveManagementShow,
-    layout: Template1,
-    guard: AuthRoutes,
-  },
-  {
     path: PATH.LEAVE_MANAGEMENT_CREATE,
     component: LeaveManagementCreate,
     layout: Template1,
@@ -174,12 +166,6 @@ const routesConfig = [
   {
     path: PATH.INVOICE_EDIT,
     component: InvoiceEdit,
-    layout: Template1,
-    guard: AuthRoutes,
-  },
-  {
-    path: PATH.INVOICE_SHOW,
-    component: InvoiceShow,
     layout: Template1,
     guard: AuthRoutes,
   },
