@@ -25,9 +25,6 @@ const LeaveManagementCreate = React.lazy(() => import('../pages/leave-management
 const LeaveManagementList = React.lazy(() => import('../pages/leave-management').then(module => ({ default: module.LeaveManagementList })));
 const LeaveManagementEdit = React.lazy(() => import('../pages/leave-management').then(module => ({ default: module.LeaveManagementEdit })));
 const LeaveManagementCalendar = React.lazy(() => import('../pages/leave-management').then(module => ({ default: module.LeaveManagementCalendar })));
-const InvoiceList = React.lazy(() => import('../pages/invoice').then(module => ({ default: module.InvoiceList })));
-const InvoiceCreate = React.lazy(() => import('../pages/invoice').then(module => ({ default: module.InvoiceCreate })));
-const InvoiceEdit = React.lazy(() => import('../pages/invoice').then(module => ({ default: module.InvoiceEdit })));
 const ResumeList = React.lazy(() => import('../pages/resume').then(module => ({ default: module.ResumeList })));
 const ResumeShow = React.lazy(() => import('../pages/resume').then(module => ({ default: module.ResumeShow })));
 const ResumeEdit = React.lazy(() => import('../pages/resume').then(module => ({ default: module.ResumeEdit })));
@@ -148,24 +145,6 @@ const routesConfig = [
   {
     path: PATH.LEAVE_MANAGEMENT_CALENDAR,
     component: LeaveManagementCalendar,
-    layout: Template1,
-    guard: AuthRoutes,
-  },
-  {
-    path: PATH.INVOICE_LIST,
-    component: InvoiceList,
-    layout: Template1,
-    guard: AuthRoutes,
-  },
-  {
-    path: PATH.INVOICE_CREATE,
-    component: InvoiceCreate,
-    layout: Template1,
-    guard: AuthRoutes,
-  },
-  {
-    path: PATH.INVOICE_EDIT,
-    component: InvoiceEdit,
     layout: Template1,
     guard: AuthRoutes,
   },
