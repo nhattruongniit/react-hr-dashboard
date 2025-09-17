@@ -227,9 +227,6 @@ export const router = createBrowserRouter([
       {
         path: PATH.EMPLOYEE_LIST,
         loader: async () => {
-          store.dispatch(setShowSpinner(true));
-          console.log(123);
-
           const data = await axios('http://localhost:3000/api/employees', {
             method: 'GET'
           })

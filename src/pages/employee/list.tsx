@@ -10,7 +10,6 @@ function EmployeeList() {
   const { data: dataSource, pagination } = useLoaderData() || {};
   const navigate = useNavigate();
 
-
   async function handleDelete(id: string) {
     if (window.confirm('Are you sure you want to delete this employee?')) {
       await fetch(`http://localhost:3000/api/employees/${id}`, {
@@ -18,8 +17,6 @@ function EmployeeList() {
       });
     }
   }
-
-  if (!dataSource) return null;
 
   return (
     <>
