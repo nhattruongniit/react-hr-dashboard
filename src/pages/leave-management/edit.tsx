@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import Badge from "../../components/badge";
 import Button from "../../components/button";
 import DatePicker from "../../components/text-field/date-picker";

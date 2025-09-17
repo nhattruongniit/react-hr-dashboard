@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import Button from "../../components/button";
 import Label from "../../components/text-field/label-field"
 import Badge from "../../components/badge";

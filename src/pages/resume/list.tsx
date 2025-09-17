@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import Button from '../../components/button';
 import { Table, TableBody, TableCell, TableHeader, TableRow } from '../../components/table/table'
 import { PATH, RESUME_STATUS } from '../../configs';

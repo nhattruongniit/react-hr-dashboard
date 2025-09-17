@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router';
 import { PATH } from '../configs';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../redux/appSlice';
