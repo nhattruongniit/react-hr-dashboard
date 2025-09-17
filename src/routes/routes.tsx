@@ -10,13 +10,16 @@
 // import RoleRoutes from "./role-routes";
 
 import React from "react";
-import { createBrowserRouter, Navigate, Outlet } from "react-router";
+import { createBrowserRouter, Navigate, Outlet, useNavigation } from "react-router";
 import { PATH } from "../configs";
 
 import { Template1 } from "../layouts/template1";
 import AuthRoutes from "./auth-routes";
 import { httpRequest } from "../services/initRequest";
 import axios from "axios";
+import Spinner from "../components/Spinner";
+import { setShowSpinner } from "../redux/appSlice";
+import { store } from "../store";
 
 // Lazy loaded components that are currently being used
 const Dashboard = React.lazy(() => import('../pages/dashboard').then(module => ({ default: module.Dashboard })));
@@ -198,13 +201,23 @@ const NotFound = React.lazy(() => import('../pages/other-pages').then(module => 
 export const router = createBrowserRouter([
   {
     path: PATH.ROOT,
-    element: (
-      <AuthRoutes>
-        <Template1>
-          <Outlet />
-        </Template1>
+    Component: () => {
+      const navigation = useNavigation();
+      if (navigation.state === 'loading' || navigation.state === 'submitting') {
+        return (
+          <Template1>
+            <Spinner />
+          </Template1>
+        )
+      }
+      return (
+        <AuthRoutes>
+          <Template1>
+            <Outlet />
+          </Template1>
       </AuthRoutes>
-    ),
+      )
+    },
     children: [
       { index: true, element: <Navigate to={PATH.DASHBOARD} replace /> },
       {
@@ -214,6 +227,9 @@ export const router = createBrowserRouter([
       {
         path: PATH.EMPLOYEE_LIST,
         loader: async () => {
+          store.dispatch(setShowSpinner(true));
+          console.log(123);
+
           const data = await axios('http://localhost:3000/api/employees', {
             method: 'GET'
           })
