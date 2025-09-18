@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
-import Badge from "../../components/badge";
-import Button from "../../components/button";
+import Badge from "../../components/atoms/badge/badge";
+import Button from "../../components/atoms/button/single-button";
 import DatePicker from "../../components/text-field/date-picker";
 import Label from "../../components/text-field/label-field"
 import SelectField from "../../components/text-field/select-field";

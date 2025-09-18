@@ -1,10 +1,10 @@
 import { useLoaderData, useNavigate } from 'react-router';
 import dayjs from "dayjs";
-import Button from '../../components/button';
-import { Table, TableBody, TableCell, TableHeader, TableRow } from '../../components/table/table'
+import Button from '../../components/atoms/button/single-button';
+import { Table, TableBody, TableCell, TableHeader, TableRow } from '../../components/atoms/table/table'
 import { PATH } from '../../configs';
 import { IEmployee } from '../../types';
-import StatusBadge from '../../components/badge/status-badge';
+import StatusBadge from '../../components/atoms/badge/status-badge';
 
 function EmployeeList() {
   const { data: dataSource, pagination } = useLoaderData() || {};

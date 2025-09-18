@@ -7,7 +7,7 @@ import './styles/tailwind.css';
 import './styles/index.css';
 
 import App from './App.tsx'
-import { AppWrapper } from './components/page-meta.tsx'
+import { AppWrapper } from './components/molecules/page-meta.tsx'
 import { SidebarProvider } from './contexts/sidebar-context.tsx';
 // import { initRequest } from './services/initRequest.ts'
 import { ThemeProvider } from './contexts/theme-context.tsx'

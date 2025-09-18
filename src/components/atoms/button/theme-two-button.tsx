@@ -1,6 +1,6 @@
-import { useTheme } from "../../contexts/theme-context";
+import { useTheme } from "../../../contexts/theme-context";
 
-export default function ThemeTogglerTwo() {
+export default function ThemeTwoButton() {
   const { toggleTheme } = useTheme();
   return (
     <button

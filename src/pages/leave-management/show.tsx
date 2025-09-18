@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import Button from "../../components/button";
+import Button from "../../components/atoms/button/single-button";
 import { PATH } from "../../configs";
 
 function LeavManagementShow() {

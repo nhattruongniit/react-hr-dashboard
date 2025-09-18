@@ -1,13 +1,13 @@
 import { useNavigate } from 'react-router';
-import Button from '../../components/button';
-import { Table, TableBody, TableCell, TableHeader, TableRow } from '../../components/table/table'
+import Button from '../../components/atoms/button/single-button';
+import { Table, TableBody, TableCell, TableHeader, TableRow } from '../../components/atoms/table/table'
 import { INVOICE_STATUS, PATH } from '../../configs';
 import { randomId } from '../../utils/randomId';
-import Badge from '../../components/badge';
+import Badge from '../../components/atoms/badge/badge';
 import RadioField from '../../components/text-field/radio-field';
 import React from 'react';
 import { useModal } from '../../hooks/use-modal';
-import { Modal } from '../../components/modal';
+import { Modal } from '../../components/molecules/modal';
 
 interface TableData {
   id: string;

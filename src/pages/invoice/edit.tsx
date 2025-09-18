@@ -1,14 +1,14 @@
 import { useNavigate } from "react-router";
 import Chart from "react-apexcharts";
 
-import Button from "../../components/button";
-import DatePicker from "../../components/text-field/date-picker";
-import Label from "../../components/text-field/label-field"
-import SelectField from "../../components/text-field/select-field";
-import TextArea from "../../components/text-field/text-area";
+import Button from "../../components/atoms/button/single-button";
 import { MarkIcon } from "../../icons"
 import { LEAVE_TYPE_COLOR, LEAVE_TYPE } from "../../configs";
-import { Table, TableBody, TableCell, TableHeader, TableRow } from "../../components/table/table";
+import { Table, TableBody, TableCell, TableHeader, TableRow } from "../../components/atoms/table/table";
+import Label from "../../components/atoms/text-field/label-field";
+import DatePicker from "../../components/atoms/text-field/date-picker";
+import SelectField from "../../components/atoms/text-field/select-field";
+import TextArea from "../../components/atoms/text-field/text-area";
 
 const tableData: any = [
   {

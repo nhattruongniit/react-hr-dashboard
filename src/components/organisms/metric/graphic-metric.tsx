@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { MoreDotIcon } from "../../icons";
-import { DropdownField } from "../text-field/dropdown-field";
-import { DropdownItem } from "../text-field/dropdown-item-field";
 import CountryMap from "./country-map";
+import { DropdownItem } from "../../atoms/text-field/dropdown-item-field";
+import { MoreDotIcon } from "../../../icons";
+import { DropdownField } from "../../atoms/text-field/dropdown-field";
 
 export default function GraphicMetric() {
   const [isOpen, setIsOpen] = useState(false);

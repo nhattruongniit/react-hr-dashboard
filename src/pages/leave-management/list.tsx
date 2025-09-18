@@ -1,10 +1,10 @@
 import { useNavigate } from 'react-router';
-import Button from '../../components/button';
-import { Table, TableBody, TableCell, TableHeader, TableRow } from '../../components/table/table'
+import Button from '../../components/atoms/button/single-button';
+import { Table, TableBody, TableCell, TableHeader, TableRow } from '../../components/atoms/table/table'
 import { randomId } from '../../utils/randomId';
 import { LEAVE_STATUS, LEAVE_TYPE, PATH } from '../../configs';
-import Badge from '../../components/badge';
-import { Modal } from '../../components/modal';
+import Badge from '../../components/atoms/badge/badge';
+import { Modal } from '../../components/molecules/modal';
 import { useModal } from '../../hooks/use-modal';
 
 interface Order {

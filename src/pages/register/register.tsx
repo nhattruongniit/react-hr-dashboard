@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router";
 import { EyeCloseIcon, EyeIcon } from "../../icons";
-import Label from "../../components/text-field/label-field";
-import Input from "../../components/text-field/input-field";
-import CheckboxField from "../../components/text-field/checkbox-field";
-import ThemeTogglerTwo from "../../components/button/theme-button-two";
+import ThemeTogglerTwo from '../../components/atoms/button/theme-two-button';
 import { PATH } from "../../configs";
+import Label from "../../components/atoms/text-field/label-field";
+import Input from "../../components/atoms/text-field/input-field";
+import CheckboxField from "../../components/atoms/text-field/checkbox-field";
 
 function Register() {
   const [showPassword, setShowPassword] = React.useState(false);

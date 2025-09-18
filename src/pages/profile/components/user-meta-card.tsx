@@ -1,10 +1,10 @@
 import { useModal } from "../../../hooks/use-modal";
 
-import { Modal } from "../../../components/modal";
-import Button from "../../../components/button";
+import { Modal } from "../../../components/molecules/modal";
+import Button from "../../../components/atoms/button/single-button";
 import Input from "../../../components/text-field/input-field";
 import Label from "../../../components/text-field/label-field";
-import AccessControl from '../../../components/access-control';
+import AccessControl from '../../../components/organisms/access-control';
 
 export default function UserMetaCard() {
   const { isOpen, openModal, closeModal } = useModal();

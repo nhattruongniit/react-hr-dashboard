@@ -1,4 +1,4 @@
-import { Table, TableBody, TableCell, TableHeader, TableRow } from "../table/table";
+import { Table, TableBody, TableCell, TableHeader, TableRow } from "../../atoms/table/table";
 
 // Define the TypeScript interface for the table rows
 interface Team {

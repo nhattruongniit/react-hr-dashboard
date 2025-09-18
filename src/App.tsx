@@ -3,7 +3,7 @@ import { ToastContainer } from 'react-toastify';
 import { RouterProvider } from "react-router";
 
 import { router } from "./routes/routes";
-import Spinner from './components/Spinner';
+import Spinner from './components/atoms/Spinner';
 
 function App() {
   return (
