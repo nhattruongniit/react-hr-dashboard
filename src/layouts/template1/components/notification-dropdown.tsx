@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router";
-import { DropdownItem } from "../../../components/text-field/dropdown-item-field";
-import { DropdownField } from "../../../components/text-field/dropdown-field";
+import { DropdownField } from "../../../components/atoms/text-field/dropdown-field";
+import { DropdownItem } from "../../../components/atoms/text-field/dropdown-item-field";
 
 export default function NotificationDropdown() {
   const [isOpen, setIsOpen] = useState(false);

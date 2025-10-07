@@ -1,9 +1,9 @@
-import { useNavigate } from 'react-router-dom';
-import Button from '../../components/button';
-import { Table, TableBody, TableCell, TableHeader, TableRow } from '../../components/table/table'
+import { useNavigate } from 'react-router';
+import Button from '../../components/atoms/button/single-button';
+import { Table, TableBody, TableCell, TableHeader, TableRow } from '../../components/atoms/table/table'
 import { PATH, RESUME_STATUS } from '../../configs';
-import Badge from '../../components/badge';
-import { Modal } from '../../components/modal';
+import Badge from '../../components/atoms/badge/badge';
+import { Modal } from '../../components/molecules/modal';
 import { useModal } from '../../hooks/use-modal';
 import SelectField from '../../components/text-field/select-field';
 

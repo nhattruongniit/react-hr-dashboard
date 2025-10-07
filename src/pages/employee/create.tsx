@@ -1,5 +1,5 @@
-import { useNavigate } from "react-router-dom";
-import Button from "../../components/button";
+import { useNavigate } from "react-router";
+import Button from "../../components/atoms/button/single-button";
 import DatePicker from "../../components/text-field/date-picker";
 import DropzoneComponent from "../../components/text-field/dropzone-field";
 import Input from "../../components/text-field/input-field"

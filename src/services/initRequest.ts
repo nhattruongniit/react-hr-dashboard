@@ -9,16 +9,13 @@ export interface CustomAxiosRequestConfig<D = any> extends AxiosRequestConfig<D>
 }
 
 const requestConfig = {
-  baseURL: 'https://tony-auth-express-vdee-6j0s-fhovok9bu.vercel.app',
+  // baseURL: 'https://tony-auth-express-vdee-6j0s-fhovok9bu.vercel.app',
+  baseURL: 'http://localhost:3000',
   timeout: 5000,
   showSpinner: true
 }
 
 export const httpRequest = axios.create(requestConfig);
-
-/*
-User request API A -> token expired -> auto send api refresh token -> auto get new token -> auto call api A again
-*/
 
 export function initRequest(store: any) {
   httpRequest.interceptors.request.use((config: CustomAxiosRequestConfig) => {
@@ -28,14 +25,7 @@ export function initRequest(store: any) {
       store.dispatch(setShowSpinner(true))
     }
 
-    // pass x auth token
     const access_token =  window.localStorage.getItem('access_token');
-
-    console.log('request success: ', {
-      config,
-      access_token
-    })
-
     if(access_token) {
       config.headers['x-auth-token'] = access_token;
     }
@@ -47,16 +37,15 @@ export function initRequest(store: any) {
   });
 
   httpRequest.interceptors.response.use((response: any) => {
-    console.log('response success: ', response);
     const showSpinner = response.config.showSpinner;
+
+    console.log('response: ', response);
 
     if (showSpinner) {
       store.dispatch(setShowSpinner(false))
     }
-    return response;
+    return response.data;
   }, async function (error: any) {
-    console.log('response error: ', error);
-
     if (error.config.showSpinner) {
       store.dispatch(setShowSpinner(false))
     }

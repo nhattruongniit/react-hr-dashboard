@@ -1,41 +1,22 @@
-import { useNavigate } from 'react-router-dom';
-import Button from '../../components/button';
-import { Table, TableBody, TableCell, TableHeader, TableRow } from '../../components/table/table'
-import { randomId } from '../../utils/randomId';
+import { useLoaderData, useNavigate } from 'react-router';
+import dayjs from "dayjs";
+import Button from '../../components/atoms/button/single-button';
+import { Table, TableBody, TableCell, TableHeader, TableRow } from '../../components/atoms/table/table'
 import { PATH } from '../../configs';
-
-interface Order {
-  id: number;
-  employeeId: string;
-  user: {
-    image: string;
-    name: string;
-    role: string;
-  };
-  team: string;
-  role: string;
-  joinDate: string;
-}
-
-// Define the table data using the interface
-const tableData: Order[] = [];
-for (let i = 0; i < 9; i++) {
-  tableData.push({
-    id: i,
-    employeeId: randomId().toString(),
-    user: {
-      image: `/images/user/user-0${i + 1}.jpg`,
-      name: "Lindsey Curtis",
-      role: "Web Designer",
-    },
-    role: 'FE Developer',
-    joinDate: "2022-01-15",
-    team: "Agency Website",
-  })
-}
+import { IEmployee } from '../../types';
+import StatusBadge from '../../components/atoms/badge/status-badge';
 
 function EmployeeList() {
+  const { data: dataSource, pagination } = useLoaderData() || {};
   const navigate = useNavigate();
+
+  async function handleDelete(id: string) {
+    if (window.confirm('Are you sure you want to delete this employee?')) {
+      await fetch(`http://localhost:3000/api/employees/${id}`, {
+        method: 'DELETE',
+      });
+    }
+  }
 
   return (
     <>
@@ -97,19 +78,25 @@ function EmployeeList() {
                       isHeader
                       className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
                     >
-                      Employee ID
+                      Email
                     </TableCell>
                     <TableCell
                       isHeader
                       className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
                     >
-                      Team
+                      Department
                     </TableCell>
                     <TableCell
                       isHeader
                       className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
                     >
-                      Role
+                      Type
+                    </TableCell>
+                    <TableCell
+                      isHeader
+                      className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+                    >
+                      Status
                     </TableCell>
                     <TableCell
                       isHeader
@@ -128,54 +115,70 @@ function EmployeeList() {
 
                 {/* Table Body */}
                 <TableBody className="divide-y divide-gray-100 dark:divide-white/[0.05]">
-                  {tableData.map((item) => (
-                    <TableRow key={item.id}>
+                  {(dataSource as IEmployee[]).map((item) => (
+                    <TableRow key={item._id}>
                       <TableCell className="px-5 py-4 sm:px-6 text-start">
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 overflow-hidden rounded-full">
                             <img
                               width={40}
                               height={40}
-                              src={item.user.image}
-                              alt={item.user.name}
+                              src="/images/user/user-01.jpg"
+                              alt={item.last_name + ' ' + item.first_name}
                             />
                           </div>
                           <div>
-                            <span className="block font-medium text-gray-800 text-theme-sm dark:text-white/90">
-                              {item.user.name}
+                            <span className="block font-medium text-gray-800 text-theme-sm dark:text-white/90 capitalize">
+                              {item.first_name + ' ' + item.last_name}
                             </span>
                             <span className="block text-gray-500 text-theme-xs dark:text-gray-400">
-                              {item.user.role}
+                              {item.position}
                             </span>
                           </div>
                         </div>
                       </TableCell>
                       <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-                        {item.employeeId}
+                        {item.email}
                       </TableCell>
                       <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-                        {item.team}
+                        {item.department}
                       </TableCell>
                       <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-                        {item.role}
+                        {item.employment_type}
                       </TableCell>
                       <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-                        {item.joinDate}
+                        <StatusBadge status={item.status.toLocaleLowerCase()}>
+                          {item.status}
+                        </StatusBadge>
+                      </TableCell>
+                      <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                        {dayjs(item.hire_date).format('DD MMM YYYY')}
                       </TableCell>
                       <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
                         <Button
                           size="ssm"
                           variant="outline"
                           startIcon={<div className='fa-classic fa-solid fa-eye fa-fw' />}
-                          onClick={() => navigate(PATH.EMPLOYEE_SHOW.replace(':id', item.id.toString()))}
+                          onClick={() => navigate(PATH.EMPLOYEE_SHOW.replace(':id', item._id.toString()))}
                           className='mr-2 mb-2'
                         />
                         <Button
                           size="ssm"
                           variant="outline"
                           startIcon={<div className='fa-classic fa-solid fa-pen fa-fw' />}
-                          onClick={() => navigate(PATH.EMPLOYEE_EDIT.replace(':id', item.id.toString()))}
+                          onClick={() => navigate(PATH.EMPLOYEE_EDIT.replace(':id', item._id.toString()))}
+                          className='mr-2 mb-2'
                         />
+
+                        {/* delete button */}
+                        <Button
+                          size="ssm"
+                          variant="outline"
+                          startIcon={<div className='fa-classic fa-solid fa-trash fa-fw' />}
+                          className='text-red-600 border-red-600 hover:bg-red-50 hover:text-red-700 active:bg-red-100 dark:border-red-500 dark:text-red-500 dark:hover:bg-red-500/10 dark:hover:text-red-400 dark:active:bg-red-500/20 mr-2 mb-2'
+                          onClick={() => handleDelete(item._id.toString())}
+                        />
+
                       </TableCell>
                     </TableRow>
                   ))}
@@ -187,7 +190,7 @@ function EmployeeList() {
       </div>
       <div className="flex justify-between items-center py-3">
         <div className="text-sm text-slate-500">
-          Showing <b>1-5</b> of 45
+          Showing <b>1-{dataSource.length < pagination.total ? dataSource.length : pagination.total}</b> of {pagination.total || 0} entries
         </div>
         <div className="flex space-x-1">
           <Button

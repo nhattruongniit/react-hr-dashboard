@@ -1,13 +1,13 @@
 import { useSelector } from 'react-redux'
 import { RootState } from '../../store'
-import PageMeta from '../../components/page-meta';
+import PageMeta from '../../components/molecules/page-meta';
 import { ArrowDownIcon, ArrowUpIcon, GroupIcon } from '../../icons';
-import Badge from '../../components/badge';
-import AverageResumeMetric from '../../components/metric/average-resume-metric';
-import ResumeStatistics from '../../components/metric/resume-statistics';
-import TotalSalaryMetric from '../../components/metric/total-salary-metric';
-import GraphicMetric from '../../components/metric/graphic-metric';
-import TeamLeaderMetric from '../../components/metric/team-leader-metric';
+import Badge from '../../components/atoms/badge/badge';
+import AverageResumeMetric from '../../components/organisms/metric/average-resume-metric';
+import ResumeStatistics from '../../components/organisms/metric/resume-statistics';
+import TotalSalaryMetric from '../../components/organisms/metric/total-salary-metric';
+import GraphicMetric from '../../components/organisms/metric/graphic-metric';
+import TeamLeaderMetric from '../../components/organisms/metric/team-leader-metric';
 
 function Dashboard() {
   const user = useSelector((state: RootState) => state.app.user);

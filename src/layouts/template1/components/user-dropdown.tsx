@@ -2,9 +2,8 @@ import { useState } from "react";
 import { PATH } from "../../../configs";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
-import { DropdownField } from "../../../components/text-field/dropdown-field";
-import { DropdownItem } from "../../../components/text-field/dropdown-item-field";
-
+import { DropdownField } from "../../../components/atoms/text-field/dropdown-field";
+import { DropdownItem } from "../../../components/atoms/text-field/dropdown-item-field";
 // 5 page -> 3 call api -> send token in header api (x3) -> server get token -> from token get user -> yes -> accept api -> return data
 // 10 page -> 30 api -> send token in header api x30
 

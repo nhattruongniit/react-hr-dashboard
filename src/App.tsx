@@ -1,15 +1,18 @@
-import { RoutersMain } from "./routes/routes";
+import { Suspense } from 'react';
 import { ToastContainer } from 'react-toastify';
-import Spinner from './components/Spinner';
+import { RouterProvider } from "react-router";
+
+import { router } from "./routes/routes";
+import Spinner from './components/atoms/Spinner';
 
 function App() {
   return (
     <>
-      <RoutersMain />
+      <Suspense fallback={<Spinner />}>
+        <RouterProvider router={router} />
+      </Suspense>
 
       <ToastContainer />
-
-      <Spinner />
     </>
   )
 }

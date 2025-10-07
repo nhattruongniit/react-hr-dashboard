@@ -1,9 +1,9 @@
 import Chart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
 import { useState } from "react";
-import { MoreDotIcon } from "../../icons";
-import { DropdownField } from "../text-field/dropdown-field";
-import { DropdownItem } from "../text-field/dropdown-item-field";
+import { DropdownItem } from "../../atoms/text-field/dropdown-item-field";
+import { MoreDotIcon } from "../../../icons";
+import { DropdownField } from "../../atoms/text-field/dropdown-field";
 
 export default function SalaryStatistics() {
   const series = [75.55];

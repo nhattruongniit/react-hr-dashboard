@@ -1,13 +1,13 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router";
 import { toast } from 'react-toastify';
 import { PATH } from "../../configs";
 import { EyeCloseIcon, EyeIcon } from "../../icons";
-import Label from "../../components/text-field/label-field";
-import Input from "../../components/text-field/input-field";
-import CheckboxField from "../../components/text-field/checkbox-field";
-import Button from "../../components/button";
-import ThemeTogglerTwo from "../../components/button/theme-button-two";
+import Button from "../../components/atoms/button/single-button";
+import ThemeTogglerTwo from "../../components/atoms/button/theme-two-button";
+import Label from "../../components/atoms/text-field/label-field";
+import Input from "../../components/atoms/text-field/input-field";
+import CheckboxField from "../../components/atoms/text-field/checkbox-field";
 
 function Login() {
   const navigate = useNavigate();

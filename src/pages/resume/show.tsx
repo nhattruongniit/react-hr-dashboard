@@ -1,7 +1,7 @@
-import { useNavigate } from "react-router-dom";
-import Button from "../../components/button";
+import { useNavigate } from "react-router";
+import Button from "../../components/atoms/button/single-button";
 import Label from "../../components/text-field/label-field"
-import Badge from "../../components/badge";
+import Badge from "../../components/atoms/badge/badge";
 import { RESUME_STATUS } from "../../configs";
 
 function ResumeShow() {

@@ -1,9 +1,9 @@
 import Chart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
-import { MoreDotIcon } from "../../icons";
 import { useState } from "react";
-import { DropdownItem } from "../text-field/dropdown-item-field";
-import { DropdownField } from "../text-field/dropdown-field";
+import { MoreDotIcon } from "../../../icons";
+import { DropdownItem } from "../../atoms/text-field/dropdown-item-field";
+import { DropdownField } from "../../atoms/text-field/dropdown-field";
 
 export default function AverageSalaryMetric() {
   const options: ApexOptions = {

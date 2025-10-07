@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router';
 import { PATH } from '../configs';
 
 function GuestRoute({ children }: React.PropsWithChildren) {

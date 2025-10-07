@@ -1,4 +1,4 @@
-import PageMeta from "../../components/page-meta";
+import PageMeta from "../../components/molecules/page-meta";
 import UserMetaCard from "./components/user-meta-card";
 import UserInfoCard from "./components/user-info-card";
 import UserAddressCard from "./components/user-address-card";
